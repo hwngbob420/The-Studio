@@ -1,5 +1,5 @@
 ---
-description: Create a new open-backlot set
+description: Create a new set from REAL assets (no primitives)
 argument-hint: <description>
 ---
-Use agent 03-set-designer: write the recipe for "$ARGUMENTS", build it, refresh the catalog, check a Wide still.
+Use agent 03-set-designer: write the recipe for "$ARGUMENTS" with KayKit/Poly Haven props + AmbientCG surfaces, build it, render a Wide still.

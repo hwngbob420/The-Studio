@@ -1,8 +1,9 @@
 ---
 name: 02-casting
-description: Creates new actors (age/ethnicity/outfit) as JSON recipes baked with the Master Toon.
+description: Builds diverse actors from stylized rigs via the variant system (skin/hair/eye/palette/accessories) or ingests Mixamo characters.
 tools: Read, Write, Bash
 ---
-Write `vault_config/presets/actors/<id>.json` (copy an existing recipe). Macro: gender 0=F..1=M, age 0.5=25y..1=90y,
-race weights sum~1, height/weight/muscle 0..1. Asset names: skill-character-lookdev.md.
-Build: `python engine/cast.py <id>` (runs build_actor.py and refreshes the catalog). Verify with a quick contact sheet.
+Add an entry to `vault_config/presets/actor_variants.json`: base (suit_f suit_m worker_f casual_m), height, skin, hair, eye, palette
+{MaterialName: hex}, accessories (glasses / mug from asset_vault/_polypizza, bone + offset). Build: `python engine/cast.py <id>`.
+Mixamo characters: drop the .fbx in asset_vault/mixamo_inbox and run `python engine/ingest_mixamo.py`. Check a portrait: eyes must read
+clean and bright (no ink on eyes/brows). See skill-character-lookdev.md.

@@ -122,3 +122,12 @@ Claude chỉ được coi là hoàn thành nhiệm vụ và bàn giao **THE STUD
 2. **Kho khởi tạo sẵn sàng sử dụng (Starter Vault):** Tối thiểu sẵn có một bộ diễn viên đa chủng tộc/tuổi tác chuẩn thẩm mỹ phương Tây đã bọc Toon + Line Art, bộ thư viện hành động body language mượt mà, và các bối cảnh mở đa concept (có preset ánh sáng linh hoạt) đã được đăng ký vào `catalog_manifest.json`.
 3. **Bản Demo kiểm chứng chất lượng (Verified Showcase):** Xuất thành công ít nhất 01 video showcase hoàn chỉnh (`1080p 60fps MP4`) đi qua đủ toàn bộ quy trình tự động (từ `shotlist.json` $\rightarrow$ `contact_sheet.jpg` $\rightarrow$ GPU Render $\rightarrow$ Motion Graphics Overlay $\rightarrow$ FFmpeg Master) đạt rõ rệt bước nhảy vọt về thẩm mỹ, biểu cảm và tiết kiệm tối đa token.
 4. **Đóng gói & Đẩy lên Git cá nhân:** Repository sạch sẽ, có `README.md` rõ ràng, `.gitignore` tối ưu, toàn bộ mã nguồn + cấu hình + Skills đã được commit mạch lạc và đẩy (push) thành công lên remote Git repository cá nhân của chủ dự án để sẵn sàng tái sử dụng cho mọi dự án tương lai.
+
+---
+## V2 OVERRIDES (supersede the table in section 2 where they differ)
+- Characters: Quaternius stylized CC0 rigs + procedural variant system (skin/hair/eye/palette/accessories) instead of MPFB2; Mixamo drop-in via `engine/ingest_mixamo.py`.
+- Sets: real assets only (KayKit, Poly Haven, AmbientCG, HDRI). Primitive-geometry buildings/trees/cars/furniture are forbidden.
+- Look: V2 3-band warm toon + weighted ink hull (no ink on eyes/brows/mouth) + HDRI + key/fill/rim + DoF + AO + contact blobs.
+- Acting: layered NLA (base + upper body) + blinks + eye tracking + Rhubarb mouth-card visemes + emotes.
+- Shotlist contract: `subject_zone` + `ui_safe_zone` per shot; callouts auto-placed; contact sheet shows UI and face boxes.
+- Definition of Done additions: `productions/showcase_v2/` A/B benchmark rendered and self-reviewed; no UI over faces.

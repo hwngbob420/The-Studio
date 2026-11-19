@@ -13,6 +13,7 @@ import wave
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "engine"))
 FPS = 60
 
 
@@ -114,8 +115,14 @@ def main():
     callouts, subs, voices = [], [], []
     k = 0
     for s in ep["shots"]:
-        for c in s.get("callouts", []):
+        try:
+            import ui_layout
+            cs = ui_layout.layout(s) if "ui_safe_zone" in s else s.get("callouts", [])   # V2 contract; V1 shotlists keep x,y
+        except ValueError as exc:
+            raise SystemExit(f"UI contract error: {exc}")
+        for c in cs:
             k += 1
+            c = {kk: vv for kk, vv in c.items() if kk not in ("box", "w", "h")} if "ui_safe_zone" in s else c
             callouts.append({**c, "id": f"c{k:02d}", "abs": starts[s["id"]] + c["t"]})
         for cast in s["cast"]:
             for ln in cast.get("lines") or ([{"wav": cast["line"]}] if cast.get("line") else []):

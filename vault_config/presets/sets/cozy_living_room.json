@@ -1,0 +1,238 @@
+{
+ "id": "cozy_living_room",
+ "label": "Set_CozyLivingRoom - apartment living room with window light (interior)",
+ "kind": "interior",
+ "hdri": {
+  "morning": "clarens_midday",
+  "day": "kloofendal_48d_partly_cloudy_puresky",
+  "golden": "belfast_sunset_puresky",
+  "night": "cobblestone_street_night",
+  "dramatic": "belfast_sunset_puresky"
+ },
+ "ground_z": 0,
+ "surfaces": [
+  {
+   "type": "ground",
+   "name": "floor",
+   "rect": [
+    -3.8,
+    -3.6,
+    3.8,
+    2.7
+   ],
+   "z": 0,
+   "pbr": "WoodFloor041",
+   "tile": 2.0
+  }
+ ],
+ "walls": [
+  {
+   "rect": [
+    -3.6,
+    2.6,
+    3.6,
+    2.6
+   ],
+   "h": 2.9,
+   "pbr": "PaintedPlaster017",
+   "tile": 2.5,
+   "axis": "x",
+   "windows": [
+    [
+     1.8,
+     2.0,
+     0.9,
+     1.5
+    ],
+    [
+     5.4,
+     1.6,
+     0.9,
+     1.5
+    ]
+   ]
+  },
+  {
+   "rect": [
+    -3.6,
+    -3.6,
+    -3.6,
+    2.6
+   ],
+   "h": 2.9,
+   "pbr": "PaintedPlaster017",
+   "tile": 2.5,
+   "axis": "y"
+  },
+  {
+   "rect": [
+    3.6,
+    -3.6,
+    3.6,
+    2.6
+   ],
+   "h": 2.9,
+   "pbr": "PaintedPlaster017",
+   "tile": 2.5,
+   "axis": "y"
+  }
+ ],
+ "props": [
+  {
+   "src": "kaykit:furniture:couch",
+   "pos": [
+    -1.3,
+    1.85,
+    0
+   ],
+   "height": 0.95
+  },
+  {
+   "src": "kaykit:furniture:table_low",
+   "pos": [
+    -1.3,
+    0.2,
+    0
+   ],
+   "height": 0.42
+  },
+  {
+   "src": "kaykit:furniture:rug_rectangle_A",
+   "pos": [
+    -1.2,
+    0.3,
+    0.0
+   ],
+   "width": 2.9,
+   "ink": false
+  },
+  {
+   "src": "kaykit:furniture:armchair",
+   "pos": [
+    1.9,
+    -0.1,
+    0
+   ],
+   "height": 0.95,
+   "rot": -55
+  },
+  {
+   "src": "kaykit:furniture:lamp_standing",
+   "pos": [
+    3.0,
+    2.0,
+    0
+   ],
+   "height": 1.75
+  },
+  {
+   "src": "ph:wooden_bookshelf_worn",
+   "pos": [
+    -3.3,
+    0.4,
+    0
+   ],
+   "height": 1.95,
+   "rot": 90
+  },
+  {
+   "src": "ph:potted_plant_02",
+   "pos": [
+    3.0,
+    -1.9,
+    0
+   ],
+   "height": 1.2
+  },
+  {
+   "src": "kaykit:furniture:pictureframe_large_A",
+   "pos": [
+    0.0,
+    2.5,
+    1.6
+   ],
+   "height": 0.9,
+   "ground": false
+  },
+  {
+   "src": "kaykit:furniture:book_set",
+   "pos": [
+    -1.0,
+    0.2,
+    0.42
+   ],
+   "height": 0.22,
+   "ground": false
+  },
+  {
+   "src": "kaykit:furniture:cactus_small_A",
+   "pos": [
+    -3.0,
+    2.2,
+    0
+   ],
+   "height": 0.4
+  }
+ ],
+ "anchors": {
+  "A": {
+   "pos": [
+    -0.2,
+    -0.9,
+    0
+   ],
+   "rot": 20
+  },
+  "B": {
+   "pos": [
+    1.3,
+    -0.8,
+    0
+   ],
+   "rot": 160
+  },
+  "standing": {
+   "pos": [
+    0.4,
+    -0.9,
+    0
+   ],
+   "rot": 0
+  },
+  "sitting_sofa": {
+   "pos": [
+    -1.3,
+    1.45,
+    0
+   ],
+   "rot": 0,
+   "kind": "sitting"
+  },
+  "Sofa": {
+   "pos": [
+    -1.3,
+    1.45,
+    0
+   ],
+   "rot": 0,
+   "kind": "sitting"
+  },
+  "walking_path": {
+   "pos": [
+    -3.0,
+    -2.2,
+    0
+   ],
+   "rot": 0,
+   "kind": "path"
+  },
+  "Window": {
+   "pos": [
+    1.8,
+    1.8,
+    0
+   ],
+   "rot": 180
+  }
+ }
+}

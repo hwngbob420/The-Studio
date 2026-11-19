@@ -26,15 +26,17 @@ def main():
     mode, out_dir = a[0], Path(a[1]).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
     if mode == "still":
-        pct, frac, files = int(a[2]), float(a[3]), a[4:]
-        for f in files:
+        pct, files = int(a[2]), a[3:]
+        for spec in files:            # "<blend>@<fraction of shot>"
+            f, frac = spec.rsplit("@", 1)
+            frac = float(frac)
             bpy.ops.wm.open_mainfile(filepath=f)
             scn = bpy.context.scene
             scn.render.resolution_percentage = pct
             scn.eevee.taa_render_samples = 16
             frame = int(scn.frame_start + (scn.frame_end - scn.frame_start) * frac)
             scn.frame_set(frame)
-            scn.render.filepath = str(out_dir / (Path(f).stem + ".png"))
+            scn.render.filepath = str(out_dir / (Path(f).stem + ("" if frac == int(frac) or len(files) == 1 or "@" not in spec else f"_{int(frac * 100):02d}") + ".png"))
             bpy.ops.render.render(write_still=True)
             print("[render_worker] still", Path(f).stem, "frame", frame)
     else:

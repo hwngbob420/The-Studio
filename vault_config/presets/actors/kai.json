@@ -1,4 +1,0 @@
-{"id":"kai","label":"Kai - 19, east-asian, energetic intern",
- "macro":{"gender":1.0,"age":0.42,"muscle":0.4,"weight":0.4,"proportions":0.55,"height":0.52,"race":{"asian":0.9,"caucasian":0.05,"african":0.05}},
- "skin":"#e0b48f","skin_tex":"young_asian_male","eye_tex":"brownlight","hair":"short03","hair_color":"#15110f","eyebrows":"eyebrow002",
- "clothes":[{"asset":"elvs_crude_t-shirt_male","color":"#2f9e87"},{"asset":"cortu_cargo_pants","color":"#75624a"},{"asset":"shoes03","color":"#f2f2f2"}]}

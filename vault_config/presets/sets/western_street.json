@@ -1,0 +1,394 @@
+{
+ "id": "western_street",
+ "label": "Set_WesternStreet - sunny small-town street, cafe tables, shops (exterior)",
+ "kind": "exterior",
+ "hdri": {
+  "morning": "clarens_midday",
+  "day": "kloofendal_48d_partly_cloudy_puresky",
+  "golden": "belfast_sunset_puresky",
+  "night": "cobblestone_street_night",
+  "dramatic": "belfast_sunset_puresky"
+ },
+ "ground_z": 0,
+ "surfaces": [
+  {
+   "type": "ground",
+   "name": "road",
+   "rect": [
+    -34,
+    -9,
+    34,
+    3.0
+   ],
+   "z": 0,
+   "pbr": "Asphalt031",
+   "tile": 5
+  },
+  {
+   "type": "ground",
+   "name": "sidewalk",
+   "rect": [
+    -34,
+    3.0,
+    34,
+    7.4
+   ],
+   "z": 0.12,
+   "pbr": "PavingStones070",
+   "tile": 3
+  }
+ ],
+ "walls": [
+  {
+   "rect": [
+    -34,
+    3.0,
+    34,
+    3.0
+   ],
+   "h": 0.12,
+   "pbr": "Concrete034",
+   "tile": 1.0,
+   "axis": "x"
+  }
+ ],
+ "props": [
+  {
+   "src": "kaykit:city_builder:building_E",
+   "pos": [
+    -17,
+    11.4,
+    0
+   ],
+   "scale": 4.0,
+   "rot": 0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:city_builder:building_C",
+   "pos": [
+    -9,
+    11.4,
+    0
+   ],
+   "scale": 4.0,
+   "rot": 0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:city_builder:building_G",
+   "pos": [
+    -1,
+    11.4,
+    0
+   ],
+   "scale": 4.0,
+   "rot": 0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:city_builder:building_F",
+   "pos": [
+    7,
+    11.4,
+    0
+   ],
+   "scale": 4.0,
+   "rot": 0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:city_builder:building_H",
+   "pos": [
+    15,
+    11.4,
+    0
+   ],
+   "scale": 4.0,
+   "rot": 0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:city_builder:building_H",
+   "pos": [
+    -21,
+    19.6,
+    0
+   ],
+   "scale": 4.6,
+   "rot": 0,
+   "ink": false
+  },
+  {
+   "src": "kaykit:city_builder:building_D",
+   "pos": [
+    -13,
+    19.6,
+    0
+   ],
+   "scale": 4.6,
+   "rot": 0,
+   "ink": false
+  },
+  {
+   "src": "kaykit:city_builder:building_C",
+   "pos": [
+    -5,
+    19.6,
+    0
+   ],
+   "scale": 4.6,
+   "rot": 0,
+   "ink": false
+  },
+  {
+   "src": "kaykit:city_builder:building_G",
+   "pos": [
+    3,
+    19.6,
+    0
+   ],
+   "scale": 4.6,
+   "rot": 0,
+   "ink": false
+  },
+  {
+   "src": "kaykit:city_builder:building_E",
+   "pos": [
+    11,
+    19.6,
+    0
+   ],
+   "scale": 4.6,
+   "rot": 0,
+   "ink": false
+  },
+  {
+   "src": "kaykit:nature:tree_single_A",
+   "pos": [
+    -9.4,
+    5.7,
+    0.12
+   ],
+   "height": 5.2,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_B",
+   "pos": [
+    9.6,
+    5.9,
+    0.12
+   ],
+   "height": 4.8,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_A",
+   "pos": [
+    -13.5,
+    5.8,
+    0.12
+   ],
+   "height": 5.0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_B",
+   "pos": [
+    18,
+    5.8,
+    0.12
+   ],
+   "height": 5.0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:city_builder:streetlight",
+   "pos": [
+    3.4,
+    3.7,
+    0.12
+   ],
+   "height": 4.8,
+   "rot": 180
+  },
+  {
+   "src": "kaykit:city_builder:streetlight",
+   "pos": [
+    -9.5,
+    3.7,
+    0.12
+   ],
+   "height": 4.8,
+   "rot": 180
+  },
+  {
+   "src": "kaykit:city_builder:bench",
+   "pos": [
+    -10.8,
+    6.3,
+    0.12
+   ],
+   "width": 2.2,
+   "rot": 180
+  },
+  {
+   "src": "ph:fire_hydrant",
+   "pos": [
+    5.8,
+    3.7,
+    0.12
+   ],
+   "height": 0.85
+  },
+  {
+   "src": "kaykit:city_builder:bush",
+   "pos": [
+    -8.2,
+    7.0,
+    0.12
+   ],
+   "scale": 3.4
+  },
+  {
+   "src": "kaykit:city_builder:bush",
+   "pos": [
+    3.6,
+    7.0,
+    0.12
+   ],
+   "scale": 3.4
+  },
+  {
+   "src": "kaykit:city_builder:bush",
+   "pos": [
+    12.4,
+    7.0,
+    0.12
+   ],
+   "scale": 3.4
+  },
+  {
+   "src": "kaykit:city_builder:car_taxi",
+   "pos": [
+    -17,
+    -1.0,
+    0
+   ],
+   "scale": 4.4,
+   "rot": 90
+  },
+  {
+   "src": "kaykit:city_builder:car_sedan",
+   "pos": [
+    16,
+    -1.5,
+    0
+   ],
+   "scale": 4.4,
+   "rot": -90
+  },
+  {
+   "src": "kaykit:city_builder:car_stationwagon",
+   "pos": [
+    -26,
+    -1.0,
+    0
+   ],
+   "scale": 4.4,
+   "rot": 90
+  },
+  {
+   "src": "kaykit:city_builder:trafficlight_A",
+   "pos": [
+    14.5,
+    3.6,
+    0.12
+   ],
+   "height": 4.2,
+   "rot": 180
+  },
+  {
+   "src": "kaykit:city_builder:dumpster",
+   "pos": [
+    -11.8,
+    7.6,
+    0.12
+   ],
+   "scale": 4.0,
+   "rot": 0
+  },
+  {
+   "src": "ph:outdoor_table_chair_set_01",
+   "pos": [
+    5.2,
+    5.6,
+    0.12
+   ],
+   "height": 0.95,
+   "rot": 20
+  },
+  {
+   "src": "ph:outdoor_table_chair_set_01",
+   "pos": [
+    8.0,
+    6.0,
+    0.12
+   ],
+   "height": 0.95,
+   "rot": -35
+  }
+ ],
+ "anchors": {
+  "A": {
+   "pos": [
+    -1.4,
+    4.9,
+    0.12
+   ],
+   "rot": 0
+  },
+  "B": {
+   "pos": [
+    0.4,
+    4.9,
+    0.12
+   ],
+   "rot": 180
+  },
+  "standing": {
+   "pos": [
+    -0.5,
+    4.9,
+    0.12
+   ],
+   "rot": 0
+  },
+  "Entry": {
+   "pos": [
+    -5.2,
+    4.8,
+    0.12
+   ],
+   "rot": 0
+  },
+  "walking_path": {
+   "pos": [
+    -5.2,
+    4.8,
+    0.12
+   ],
+   "rot": 0,
+   "kind": "path"
+  },
+  "Table": {
+   "pos": [
+    5.2,
+    4.7,
+    0.12
+   ],
+   "rot": 0
+  }
+ }
+}

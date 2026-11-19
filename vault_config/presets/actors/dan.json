@@ -1,4 +1,0 @@
-{"id":"dan","label":"Dan - 38, caucasian, tired-but-charming producer",
- "macro":{"gender":1.0,"age":0.57,"muscle":0.55,"weight":0.58,"proportions":0.5,"height":0.68,"race":{"asian":0.05,"caucasian":0.85,"african":0.1}},
- "skin":"#d9a584","skin_tex":"young_caucasian_male","eye_tex":"bluegreen","hair":"short02","hair_color":"#4a3220","eyebrows":"eyebrow004",
- "clothes":[{"asset":"male_casualsuit03","color":"#5d6b84"},{"asset":"toigo_ankle_boots_male","color":"#3a2b22"}]}

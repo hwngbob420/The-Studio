@@ -1,0 +1,412 @@
+{
+ "episode": "showcase_v2",
+ "fps": 60,
+ "res": [
+  1920,
+  1080
+ ],
+ "samples": 8,
+ "audio": {
+  "bgm": "auto",
+  "bgm_db": -21,
+  "voice_db": 2,
+  "sfx_db": -12
+ },
+ "shots": [
+  {
+   "id": "s01",
+   "dur": 3.6,
+   "set": "western_street",
+   "mood": "golden",
+   "cast": [
+    {
+     "actor": "maya",
+     "at": "Entry",
+     "face": "dan",
+     "actions": [
+      [
+       0,
+       "walk"
+      ],
+      [
+       2.9,
+       "idle"
+      ]
+     ],
+     "path": [
+      {
+       "t": 2.9,
+       "to": "A"
+      }
+     ],
+     "emote": "happy",
+     "look": "cam"
+    },
+    {
+     "actor": "dan",
+     "at": "B",
+     "face": "A",
+     "action": "idle",
+     "emote": "smug",
+     "look": "maya"
+    }
+   ],
+   "cam": {
+    "preset": "Wide",
+    "focus": [
+     "maya",
+     "dan"
+    ]
+   },
+   "callouts": [
+    {
+     "t": 0.4,
+     "dur": 2.8,
+     "type": "kinetic",
+     "text": "THE STUDIO",
+     "size": 170
+    },
+    {
+     "t": 1.3,
+     "dur": 2.2,
+     "type": "lower",
+     "text": "Maya Okafor",
+     "sub": "Creative Lead"
+    }
+   ],
+   "subject_zone": "left_third",
+   "ui_safe_zone": "right_third"
+  },
+  {
+   "id": "s02",
+   "dur": 4.0,
+   "set": "western_street",
+   "mood": "golden",
+   "cast": [
+    {
+     "actor": "maya",
+     "at": "A",
+     "face": "B",
+     "action": "talk_emphatic",
+     "emote": "happy",
+     "look": "dan",
+     "lines": [
+      {
+       "say": "You will not believe what the data says!",
+       "voice": "Zira",
+       "t": 0.3,
+       "wav": "audio/s02_maya_0.wav",
+       "text": "You will not believe what the data says!"
+      }
+     ]
+    },
+    {
+     "actor": "dan",
+     "at": "B",
+     "face": "A",
+     "action": "idle",
+     "emote": "neutral",
+     "look": "maya"
+    }
+   ],
+   "cam": {
+    "preset": "OTS",
+    "over": "dan",
+    "at": "maya"
+   },
+   "callouts": [
+    {
+     "t": 1.2,
+     "dur": 2.4,
+     "type": "icon",
+     "icon": "\ud83d\udca1",
+     "color": "#ffe27a"
+    }
+   ],
+   "subject_zone": "left_third",
+   "ui_safe_zone": "right_third"
+  },
+  {
+   "id": "s03",
+   "dur": 3.4,
+   "set": "western_street",
+   "mood": "golden",
+   "cast": [
+    {
+     "actor": "dan",
+     "at": "B",
+     "face": "A",
+     "actions": [
+      [
+       0,
+       "surprised"
+      ],
+      [
+       1.6,
+       "think_chin"
+      ]
+     ],
+     "emotes": [
+      [
+       0,
+       "neutral"
+      ],
+      [
+       0.2,
+       "surprised"
+      ],
+      [
+       1.7,
+       "worried"
+      ]
+     ],
+     "look": "maya",
+     "lines": [
+      {
+       "say": "Wait, what? Show me!",
+       "voice": "David",
+       "t": 0.45,
+       "wav": "audio/s03_dan_0.wav",
+       "text": "Wait, what? Show me!",
+       "rate": 2
+      }
+     ]
+    },
+    {
+     "actor": "maya",
+     "at": "A",
+     "face": "B",
+     "action": "idle",
+     "emote": "smug",
+     "look": "dan"
+    }
+   ],
+   "cam": {
+    "preset": "CloseUp",
+    "focus": "dan",
+    "flip": -1
+   },
+   "subject_zone": "right_third",
+   "ui_safe_zone": "none"
+  },
+  {
+   "id": "s04",
+   "dur": 4.8,
+   "set": "western_street",
+   "mood": "day",
+   "cast": [
+    {
+     "actor": "maya",
+     "at": "A",
+     "face": "B",
+     "actions": [
+      [
+       0,
+       "talk_emphatic"
+      ],
+      [
+       2.6,
+       "argue_point"
+      ]
+     ],
+     "emotes": [
+      [
+       0,
+       "smug"
+      ],
+      [
+       2.6,
+       "happy"
+      ]
+     ],
+     "look": "cam",
+     "lines": [
+      {
+       "say": "Eighty seven percent of meetings could have been an email.",
+       "voice": "Zira",
+       "t": 0.3,
+       "wav": "audio/s04_maya_0.wav",
+       "text": "Eighty seven percent of meetings could have been an email."
+      }
+     ]
+    },
+    {
+     "actor": "dan",
+     "at": "B",
+     "face": "A",
+     "action": "idle",
+     "emote": "worried",
+     "look": "maya"
+    }
+   ],
+   "cam": {
+    "preset": "SlowDolly",
+    "focus": "maya"
+   },
+   "callouts": [
+    {
+     "t": 1.3,
+     "dur": 3.2,
+     "type": "stat",
+     "value": 87,
+     "suffix": "%",
+     "text": "could be an email"
+    },
+    {
+     "t": 2.9,
+     "dur": 1.7,
+     "type": "icon",
+     "icon": "\ud83d\udce7",
+     "color": "#7ab8ff"
+    }
+   ],
+   "subject_zone": "left_third",
+   "ui_safe_zone": "right_third"
+  },
+  {
+   "id": "s05",
+   "dur": 3.6,
+   "set": "cozy_living_room",
+   "mood": "night",
+   "cast": [
+    {
+     "actor": "dan",
+     "at": "A",
+     "face": "B",
+     "action": "slump_tired",
+     "emote": "tired",
+     "look": [
+      0.5,
+      -3,
+      1.3
+     ],
+     "lines": [
+      {
+       "say": "I need so much more coffee.",
+       "voice": "David",
+       "t": 0.4,
+       "wav": "audio/s05_dan_0.wav",
+       "text": "I need so much more coffee."
+      }
+     ]
+    },
+    {
+     "actor": "kai",
+     "at": "B",
+     "face": "A",
+     "action": "talk_calm",
+     "emote": "happy",
+     "look": "dan"
+    }
+   ],
+   "cam": {
+    "preset": "Handheld",
+    "focus": [
+     "dan",
+     "kai"
+    ]
+   },
+   "callouts": [
+    {
+     "t": 1.0,
+     "dur": 2.4,
+     "type": "bars",
+     "text": "Coffee per day",
+     "data": [
+      [
+       "Maya",
+       6,
+       "#ff7a6b"
+      ],
+      [
+       "Dan",
+       9,
+       "#6bd4a1"
+      ],
+      [
+       "Kai",
+       3,
+       "#7ab8ff"
+      ]
+     ]
+    }
+   ],
+   "subject_zone": "left_third",
+   "ui_safe_zone": "right_third"
+  },
+  {
+   "id": "s06",
+   "dur": 3.0,
+   "set": "city_park",
+   "mood": "day",
+   "cast": [
+    {
+     "actor": "maya",
+     "at": [
+      -2.1,
+      0,
+      0
+     ],
+     "rot": -6,
+     "action": "talk_calm",
+     "emote": "happy",
+     "look": "cam"
+    },
+    {
+     "actor": "dan",
+     "at": [
+      -0.7,
+      0.3,
+      0
+     ],
+     "rot": 4,
+     "action": "talk_emphatic",
+     "emote": "happy",
+     "look": "cam"
+    },
+    {
+     "actor": "lena",
+     "at": [
+      0.7,
+      0.1,
+      0
+     ],
+     "rot": 8,
+     "action": "talk_calm",
+     "emote": "happy",
+     "look": "cam"
+    },
+    {
+     "actor": "kai",
+     "at": [
+      2.1,
+      -0.1,
+      0
+     ],
+     "rot": 12,
+     "action": "talk_emphatic",
+     "emote": "happy",
+     "look": "cam"
+    }
+   ],
+   "cam": {
+    "preset": "Wide",
+    "focus": [
+     "maya",
+     "kai"
+    ]
+   },
+   "callouts": [
+    {
+     "t": 0.3,
+     "dur": 2.5,
+     "type": "kinetic",
+     "text": "STAY TUNED!",
+     "size": 170
+    }
+   ],
+   "subject_zone": "left_third",
+   "ui_safe_zone": "right_third"
+  }
+ ]
+}

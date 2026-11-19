@@ -1,4 +1,4 @@
 ---
-description: Check toolchain, GPU, vault; run a smoke test
+description: Check toolchain, GPU, vault and the no-primitives rule
 ---
-Run `python bootstrap_studio.py --doctor`; verify asset_vault has actors/sets/actions; compile+sheet a 1-shot episode; report fixes.
+Run `python bootstrap_studio.py --doctor`; verify asset_vault/actors, sets and actions/library_q.blend exist; grep the set recipes for non-asset props; report fixes.

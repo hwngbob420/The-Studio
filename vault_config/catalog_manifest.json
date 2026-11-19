@@ -1,20 +1,20 @@
 {
  "actors": {
-  "dan": "Dan - 38, caucasian, tired-but-charming producer",
-  "kai": "Kai - 19, east-asian, energetic intern",
-  "lena": "Lena - 64, caucasian, warm grandmotherly mentor",
-  "maya": "Maya - 28, mixed-heritage, creative lead"
+  "maya": "Maya - 28, Black British creative lead",
+  "dan": "Dan - 38, white American producer (tired, charming)",
+  "lena": "Lena - 64, warm mentor",
+  "kai": "Kai - 19, East-Asian intern (energetic)"
  },
  "sets": {
-  "cafe_street": {
-   "about": "City street with coffee cart and outdoor tables (exterior)",
-   "anchors": [
-    "A",
-    "B",
-    "Cart",
-    "Table",
-    "Entry"
-   ],
+  "city_park": {
+   "about": "Set_CityPark - sunny city park, path, trees, hills (exterior)",
+   "anchors": {
+    "A": "standing",
+    "B": "standing",
+    "standing": "standing",
+    "walking_path": "path",
+    "Table": "standing"
+   },
    "moods": [
     "morning",
     "day",
@@ -23,14 +23,17 @@
     "dramatic"
    ]
   },
-  "living_room": {
-   "about": "Cozy apartment living room (interior, window light)",
-   "anchors": [
-    "A",
-    "B",
-    "Sofa",
-    "Window"
-   ],
+  "cozy_living_room": {
+   "about": "Set_CozyLivingRoom - apartment living room with window light (interior)",
+   "anchors": {
+    "A": "standing",
+    "B": "standing",
+    "standing": "standing",
+    "sitting_sofa": "sitting",
+    "Sofa": "sitting",
+    "walking_path": "path",
+    "Window": "standing"
+   },
    "moods": [
     "morning",
     "day",
@@ -39,14 +42,16 @@
     "dramatic"
    ]
   },
-  "park": {
-   "about": "Sunny park with picnic table, lamp and tree line (exterior)",
-   "anchors": [
-    "A",
-    "B",
-    "Table",
-    "Path"
-   ],
+  "western_street": {
+   "about": "Set_WesternStreet - sunny small-town street, cafe tables, shops (exterior)",
+   "anchors": {
+    "A": "standing",
+    "B": "standing",
+    "standing": "standing",
+    "Entry": "standing",
+    "walking_path": "path",
+    "Table": "standing"
+   },
    "moods": [
     "morning",
     "day",
@@ -56,27 +61,43 @@
    ]
   }
  },
- "actions": [
+ "base_clips": [
+  "idle",
+  "walk",
+  "run",
+  "wave",
+  "interact",
+  "sit_idle",
+  "sit_talk"
+ ],
+ "upper_body_actions": [
   "argue_point",
-  "idle_breathe",
+  "cross_arms",
+  "drink_coffee",
+  "laugh",
   "phone_scroll",
+  "shrug",
   "slump_tired",
   "surprised",
   "talk_calm",
   "talk_emphatic",
-  "think_chin",
-  "walk"
+  "think_chin"
  ],
  "emotes": [
-  "neutral",
-  "happy",
-  "sad",
+  "amused",
   "angry",
-  "surprised",
-  "worried",
+  "deadpan",
+  "excited",
+  "exhausted",
+  "happy",
+  "neutral",
+  "sad",
+  "skeptical",
   "smug",
+  "surprised",
+  "thinking",
   "tired",
-  "thinking"
+  "worried"
  ],
  "moods": [
   "morning",
@@ -85,19 +106,32 @@
   "night",
   "dramatic"
  ],
- "cameras": [
-  "Wide",
-  "Medium",
-  "SlowDolly",
-  "Handheld",
-  "OTS",
-  "CloseUp",
-  "LowHero"
- ],
+ "cameras": {
+  "Wide": "frame",
+  "Medium": "frame",
+  "SlowDolly": "frame",
+  "Handheld": "frame",
+  "OTS": "ots",
+  "CloseUp": "close",
+  "LowHero": "frame"
+ },
  "camera_notes": {
-  "OTS": "needs over+at actor ids",
-  "CloseUp": "focus=actor, flip=-1 mirrors side",
-  "Wide/Medium/SlowDolly/Handheld/LowHero": "focus=[actors]"
+  "OTS": "needs over+at actor ids; DoF on speaker eyes",
+  "CloseUp": "focus=actor; flip=-1 mirrors side",
+  "others": "focus=[actors]"
+ },
+ "ui_contract": {
+  "subject_zone": [
+   "left_third",
+   "center",
+   "right_third"
+  ],
+  "ui_safe_zone": [
+   "right_third",
+   "top_left",
+   "none"
+  ],
+  "rule": "callouts have NO x/y - they are auto-placed inside ui_safe_zone; shots with callouts need ui_safe_zone != none"
  },
  "callouts": [
   "card",
@@ -111,5 +145,10 @@
   "Zira",
   "David"
  ],
- "shot_schema": "see .claude/skills/shotlist-schema.md"
+ "anchor_kinds": [
+  "standing",
+  "sitting",
+  "path"
+ ],
+ "shot_schema": ".claude/skills/shotlist-schema.md"
 }

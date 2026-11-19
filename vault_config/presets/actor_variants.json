@@ -1,0 +1,167 @@
+{
+ "bases": {
+  "suit_f": {
+   "poly_pizza": "sOUciDsoVV",
+   "skin_mats": [
+    "Skin"
+   ],
+   "hair_mats": [
+    "Hair_Blond"
+   ],
+   "brow_mats": [
+    "Hair_Brown"
+   ],
+   "notes": "Quaternius Suit woman (CC0)"
+  },
+  "suit_m": {
+   "poly_pizza": "JFrLIKqvCH",
+   "skin_mats": [
+    "Skin"
+   ],
+   "hair_mats": [
+    "Hair"
+   ],
+   "brow_mats": [
+    "Eyebrows"
+   ],
+   "notes": "Quaternius Business Man (CC0)"
+  },
+  "worker_f": {
+   "poly_pizza": "E8079Ahx7k",
+   "skin_mats": [
+    "Skin"
+   ],
+   "hair_mats": [
+    "DarkBrown"
+   ],
+   "brow_mats": [],
+   "notes": "Quaternius Worker woman (CC0)"
+  },
+  "casual_m": {
+   "poly_pizza": "kZ3DmIoGip",
+   "skin_mats": [
+    "Skin",
+    "Skin_Darker"
+   ],
+   "hair_mats": [
+    "Hair"
+   ],
+   "brow_mats": [
+    "Eyebrows"
+   ],
+   "notes": "Quaternius Casual character (CC0)"
+  }
+ },
+ "variants": [
+  {
+   "id": "maya",
+   "label": "Maya - 28, Black British creative lead",
+   "base": "suit_f",
+   "height": 1.68,
+   "skin": "#8a5a3c",
+   "hair": "#1c120d",
+   "eye": "#5a3a22",
+   "palette": {
+    "Black": "#34456a",
+    "White": "#e0554c"
+   },
+   "accessories": [
+    {
+     "name": "mug",
+     "file": "asset_vault/_polypizza/54cOZNS04L.glb",
+     "bone": "Wrist.R",
+     "offset": [
+      0.0,
+      -0.04,
+      0.02
+     ],
+     "width": 0.09,
+     "rot": [
+      0,
+      0,
+      0
+     ],
+     "color": "#f4efe4"
+    }
+   ]
+  },
+  {
+   "id": "dan",
+   "label": "Dan - 38, white American producer (tired, charming)",
+   "base": "suit_m",
+   "height": 1.82,
+   "skin": "#e6b08c",
+   "hair": "#4a3220",
+   "eye": "#4b86a8",
+   "palette": {
+    "Suit.001": "#66779a",
+    "Suit": "#59688a",
+    "White": "#f2eee4",
+    "Tie": "#c4473b"
+   },
+   "accessories": [
+    {
+     "name": "glasses",
+     "file": "asset_vault/_polypizza/j3xPyO1mvt.glb",
+     "bone": "Head",
+     "offset": [
+      0.0,
+      -0.122,
+      0.108
+     ],
+     "width": 0.15,
+     "color": "#2b2b33"
+    }
+   ]
+  },
+  {
+   "id": "lena",
+   "label": "Lena - 64, warm mentor",
+   "base": "worker_f",
+   "height": 1.6,
+   "skin": "#e2bba3",
+   "hair": "#c9c9d2",
+   "eye": "#6c8aa6",
+   "remove_faces_head": [
+    "Worker_Yellow"
+   ],
+   "palette": {
+    "Worker_Vest": "#7da3c6",
+    "Worker_Yellow": "#d9c27a",
+    "White": "#f6efe2",
+    "Brown_02": "#5b5663",
+    "Brown2": "#5b5663",
+    "Black": "#7a4a3a"
+   },
+   "accessories": [
+    {
+     "name": "glasses",
+     "file": "asset_vault/_polypizza/p5QgQxkMBE.glb",
+     "bone": "Head",
+     "offset": [
+      0.0,
+      -0.122,
+      0.108
+     ],
+     "width": 0.15,
+     "color": "#8b2f4a"
+    }
+   ]
+  },
+  {
+   "id": "kai",
+   "label": "Kai - 19, East-Asian intern (energetic)",
+   "base": "casual_m",
+   "height": 1.74,
+   "skin": "#e0b087",
+   "hair": "#15110f",
+   "eye": "#2b1d14",
+   "palette": {
+    "LightBrown": "#2f9e87",
+    "LightBlue": "#7a6548",
+    "White": "#f5f5f5",
+    "Red_Dark": "#f2f2f2"
+   }
+  }
+ ]
+}

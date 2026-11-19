@@ -1,5 +1,7 @@
 """Master NPR look: banded toon shading + rim light + inverted-hull ink outline (GPU-cheap),
 optional Grease Pencil Line Art for static sets. Runs inside Blender (bpy)."""
+import math
+
 import bpy
 
 INK = (0.03, 0.02, 0.04, 1.0)
@@ -17,98 +19,80 @@ def _mix_rgba(tree, loc, blend="MIX"):
     return _n(tree, "ShaderNodeMix", loc, data_type="RGBA", blend_type=blend)
 
 
-def toon_material(name, color, bands=3, rim=0.30, rim_color=(1.0, 0.93, 0.8), texture=None,
-                  shadow_tint=(0.78, 0.7, 0.93), cutout=False, emission=0.0, posterize=0, saturate=1.0, value=1.0):
-    """Banded diffuse (Shader-to-RGB) -> lit/shadow colours, cool shadow tint, fresnel rim."""
+def toon_material(name, color, bands=3, rim=0.22, rim_color=(1.0, 0.93, 0.8), texture=None,
+                  shadow_tint=None, cutout=False, emission=0.0, posterize=0, saturate=1.0, value=1.0,
+                  cool=(0.60, 0.64, 0.92), mid=(0.93, 0.90, 0.88), warm=(1.14, 1.07, 0.96), steps=(0.18, 0.55)):
+    """V2 Western 3-band shader: base x [cool ambient shadow | neutral midtone | warm highlight].
+    Bands come from the diffuse term of the scene lights/HDRI (Shader-to-RGB), rim from a fresnel ramp."""
     if name in bpy.data.materials:
         return bpy.data.materials[name]
     mat = bpy.data.materials.new(name)
     mat.use_nodes = True
     t = mat.node_tree
     t.nodes.clear()
-    out = _n(t, "ShaderNodeOutputMaterial", (1000, 0))
-    diff = _n(t, "ShaderNodeBsdfDiffuse", (-700, 100))
-    s2r = _n(t, "ShaderNodeShaderToRGB", (-500, 100))
-    ramp = _n(t, "ShaderNodeValToRGB", (-300, 100))
-    ramp.color_ramp.interpolation = "CONSTANT"
+    out = _n(t, "ShaderNodeOutputMaterial", (1200, 0))
+    diff = _n(t, "ShaderNodeBsdfDiffuse", (-800, 100))
+    s2r = _n(t, "ShaderNodeShaderToRGB", (-600, 100))
+    bw = _n(t, "ShaderNodeRGBToBW", (-420, 100))
+    ramp = _n(t, "ShaderNodeValToRGB", (-250, 100))
+    ramp.color_ramp.interpolation = "LINEAR"           # tiny soft edge between bands (hand-painted feel)
     el = ramp.color_ramp.elements
-    while len(el) < bands:
-        el.new(0.5)
-    for i, e in enumerate(el):
-        e.position = i / bands
-        v = 0.28 + 0.72 * i / max(bands - 1, 1)     # shadow band keeps 28% of the base colour (no black holes)
-        e.color = (v, v, v, 1)
+    el[0].position, el[0].color = 0.0, (*cool, 1)
+    el[1].position, el[1].color = 1.0, (*warm, 1)
+    e0 = el.new(steps[0]); e0.color = (*cool, 1)
+    e1 = el.new(steps[0] + 0.03); e1.color = (*mid, 1)
+    e2 = el.new(steps[1]); e2.color = (*mid, 1)
+    e3 = el.new(steps[1] + 0.03); e3.color = (*warm, 1)
     t.links.new(diff.outputs["BSDF"], s2r.inputs["Shader"])
-    t.links.new(s2r.outputs["Color"], ramp.inputs["Fac"])
+    t.links.new(s2r.outputs["Color"], bw.inputs["Color"])
+    t.links.new(bw.outputs["Val"], ramp.inputs["Fac"])
 
     if texture:
-        tex = _n(t, "ShaderNodeTexImage", (-500, 450))
+        tex = _n(t, "ShaderNodeTexImage", (-600, 450))
         tex.image = bpy.data.images.load(str(texture), check_existing=True)
         base_out = tex.outputs["Color"]
-        if posterize or saturate != 1.0 or value != 1.0:   # flatten photo textures into cel-painted colour patches
-            if saturate != 1.0 or value != 1.0:
-                hs = _n(t, "ShaderNodeHueSaturation", (-250, 450))
-                hs.inputs["Saturation"].default_value = saturate
-                hs.inputs["Value"].default_value = value
-                t.links.new(base_out, hs.inputs["Color"])
-                base_out = hs.outputs["Color"]
-            if posterize:
-                sep = _n(t, "ShaderNodeSeparateColor", (-120, 640))
-                com = _n(t, "ShaderNodeCombineColor", (330, 640))
-                t.links.new(base_out, sep.inputs["Color"])
-                for i, ch in enumerate(("Red", "Green", "Blue")):
-                    mu = _n(t, "ShaderNodeMath", (30, 760 - 90 * i), operation="MULTIPLY")
-                    mu.inputs[1].default_value = posterize
-                    fl = _n(t, "ShaderNodeMath", (140, 760 - 90 * i), operation="ROUND")
-                    dv = _n(t, "ShaderNodeMath", (240, 760 - 90 * i), operation="DIVIDE")
-                    dv.inputs[1].default_value = posterize
-                    t.links.new(sep.outputs[ch], mu.inputs[0])
-                    t.links.new(mu.outputs[0], fl.inputs[0])
-                    t.links.new(fl.outputs[0], dv.inputs[0])
-                    t.links.new(dv.outputs[0], com.inputs[ch])
-                base_out = com.outputs["Color"]
+        if saturate != 1.0 or value != 1.0:
+            hs = _n(t, "ShaderNodeHueSaturation", (-400, 450))
+            hs.inputs["Saturation"].default_value = saturate
+            hs.inputs["Value"].default_value = value
+            t.links.new(base_out, hs.inputs["Color"])
+            base_out = hs.outputs["Color"]
     else:
         base = _n(t, "ShaderNodeRGB", (-500, 450))
         base.outputs[0].default_value = (*color[:3], 1)
         base_out = base.outputs[0]
 
-    shade = _mix_rgba(t, (-100, 450), "MULTIPLY")
+    shade = _mix_rgba(t, (200, 300), "MULTIPLY")
     shade.inputs["Factor"].default_value = 1.0
-    shade.inputs[7].default_value = (*shadow_tint, 1)
     t.links.new(base_out, shade.inputs[6])
-
-    # ramp drives shadow -> lit using only the lit/dark split (first band darkest)
-    lit = _mix_rgba(t, (200, 250))
-    t.links.new(ramp.outputs["Color"], lit.inputs["Factor"])
-    t.links.new(shade.outputs[2], lit.inputs[6])
-    t.links.new(base_out, lit.inputs[7])
+    t.links.new(ramp.outputs["Color"], shade.inputs[7])
 
     lw = _n(t, "ShaderNodeLayerWeight", (-500, -250))
     lw.inputs["Blend"].default_value = 0.5
     rimramp = _n(t, "ShaderNodeValToRGB", (-250, -250))
-    rimramp.color_ramp.interpolation = "CONSTANT"
-    rimramp.color_ramp.elements[0].position = 0.0
+    rimramp.color_ramp.interpolation = "LINEAR"
+    rimramp.color_ramp.elements[0].position = 0.62
     rimramp.color_ramp.elements[0].color = (0, 0, 0, 1)
-    rimramp.color_ramp.elements[1].position = 0.7
+    rimramp.color_ramp.elements[1].position = 0.70
     rimramp.color_ramp.elements[1].color = (1, 1, 1, 1)
     t.links.new(lw.outputs["Fresnel"], rimramp.inputs["Fac"])
-    rimmix = _mix_rgba(t, (550, 100), "ADD")
+    rimmix = _mix_rgba(t, (650, 100), "ADD")
     rimmix.inputs[7].default_value = (*(c * rim for c in rim_color), 1)
     t.links.new(rimramp.outputs["Color"], rimmix.inputs["Factor"])
-    t.links.new(lit.outputs[2], rimmix.inputs[6])
+    t.links.new(shade.outputs[2], rimmix.inputs[6])
 
-    emit = _n(t, "ShaderNodeEmission", (800, 100))
+    emit = _n(t, "ShaderNodeEmission", (850, 100))
     t.links.new(rimmix.outputs[2], emit.inputs["Color"])
-    if emission > 0:   # self-lit (windows, lamps, screens): lift colour toward white-hot
-        boost = _n(t, "ShaderNodeEmission", (800, -100))
+    if emission > 0:
+        boost = _n(t, "ShaderNodeEmission", (850, -100))
         boost.inputs["Strength"].default_value = emission
         t.links.new(base_out, boost.inputs["Color"])
         add = _n(t, "ShaderNodeAddShader", (1000, 0))
         t.links.new(emit.outputs["Emission"], add.inputs[0])
         t.links.new(boost.outputs["Emission"], add.inputs[1])
         t.links.new(add.outputs[0], out.inputs["Surface"])
-    elif cutout and texture:   # alpha-cut foliage / decals
-        tr = _n(t, "ShaderNodeBsdfTransparent", (800, -150))
+    elif cutout and texture:
+        tr = _n(t, "ShaderNodeBsdfTransparent", (850, -150))
         mix = _n(t, "ShaderNodeMixShader", (1000, 0))
         t.links.new(tex.outputs["Alpha"], mix.inputs["Fac"])
         t.links.new(tr.outputs[0], mix.inputs[1])
@@ -118,6 +102,35 @@ def toon_material(name, color, bands=3, rim=0.30, rim_color=(1.0, 0.93, 0.8), te
     else:
         t.links.new(emit.outputs["Emission"], out.inputs["Surface"])
     return mat
+
+
+def hdri_world(path, strength=1.0, tint=None, rotation_deg=0.0):
+    """Real Poly Haven HDRI as sky + bounce light."""
+    scn = bpy.context.scene
+    w = scn.world or bpy.data.worlds.new("World")
+    scn.world = w
+    w.use_nodes = True
+    t = w.node_tree
+    t.nodes.clear()
+    out = _n(t, "ShaderNodeOutputWorld", (600, 0))
+    bg = _n(t, "ShaderNodeBackground", (400, 0))
+    env = _n(t, "ShaderNodeTexEnvironment", (0, 0))
+    env.image = bpy.data.images.load(str(path), check_existing=True)
+    mp = _n(t, "ShaderNodeMapping", (-250, 0))
+    mp.inputs["Rotation"].default_value[2] = math.radians(rotation_deg)
+    tc = _n(t, "ShaderNodeTexCoord", (-450, 0))
+    t.links.new(tc.outputs["Generated"], mp.inputs["Vector"])
+    t.links.new(mp.outputs["Vector"], env.inputs["Vector"])
+    last = env.outputs["Color"]
+    if tint:
+        mx = _mix_rgba(t, (200, 0), "MULTIPLY")
+        mx.inputs["Factor"].default_value = 1.0
+        mx.inputs[7].default_value = (*tint, 1)
+        t.links.new(last, mx.inputs[6])
+        last = mx.outputs[2]
+    t.links.new(last, bg.inputs["Color"])
+    bg.inputs["Strength"].default_value = strength
+    t.links.new(bg.outputs[0], out.inputs[0])
 
 
 def ink_material(name="Ink"):
@@ -135,7 +148,7 @@ def ink_material(name="Ink"):
     return m
 
 
-def add_outline(obj, thickness=0.004, name="InkHull"):
+def add_outline(obj, thickness=0.004, name="InkHull", exclude_group=None):
     """Inverted-hull outline: flipped solidify + ink-only slot with backface culling. GPU-cheap."""
     if name in obj.modifiers:
         return None
@@ -148,6 +161,9 @@ def add_outline(obj, thickness=0.004, name="InkHull"):
     mod.use_flip_normals = True
     mod.use_rim = False
     mod.material_offset = idx
+    if exclude_group:   # weight-0 verts get zero thickness -> no ink on eyes/brows/mouth
+        mod.vertex_group = exclude_group
+        mod.thickness_vertex_group = 0.0
     return mod
 
 

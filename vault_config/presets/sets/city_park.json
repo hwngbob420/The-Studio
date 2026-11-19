@@ -1,0 +1,350 @@
+{
+ "id": "city_park",
+ "label": "Set_CityPark - sunny city park, path, trees, hills (exterior)",
+ "kind": "exterior",
+ "hdri": {
+  "morning": "clarens_midday",
+  "day": "kloofendal_48d_partly_cloudy_puresky",
+  "golden": "belfast_sunset_puresky",
+  "night": "cobblestone_street_night",
+  "dramatic": "belfast_sunset_puresky"
+ },
+ "ground_z": 0,
+ "surfaces": [
+  {
+   "type": "ground",
+   "name": "grass",
+   "rect": [
+    -45,
+    -14,
+    45,
+    45
+   ],
+   "z": 0,
+   "pbr": "Grass004",
+   "tile": 5
+  },
+  {
+   "type": "ground",
+   "name": "path",
+   "rect": [
+    -1.4,
+    -14,
+    1.4,
+    45
+   ],
+   "z": 0.03,
+   "pbr": "PavingStones070",
+   "tile": 2.2
+  }
+ ],
+ "props": [
+  {
+   "src": "kaykit:nature:tree_single_A",
+   "pos": [
+    -6,
+    5,
+    0
+   ],
+   "height": 6.0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_B",
+   "pos": [
+    7,
+    7,
+    0
+   ],
+   "height": 6.5,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_A",
+   "pos": [
+    -11,
+    11,
+    0
+   ],
+   "height": 7.0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_B",
+   "pos": [
+    12,
+    13,
+    0
+   ],
+   "height": 7.0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_A",
+   "pos": [
+    -3,
+    15,
+    0
+   ],
+   "height": 6.5,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_B",
+   "pos": [
+    4,
+    17,
+    0
+   ],
+   "height": 7.0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_B",
+   "pos": [
+    -16,
+    6,
+    0
+   ],
+   "height": 6.0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:tree_single_A",
+   "pos": [
+    17,
+    5,
+    0
+   ],
+   "height": 6.0,
+   "ink_w": 0.02
+  },
+  {
+   "src": "kaykit:nature:trees_A_medium",
+   "pos": [
+    -20,
+    24,
+    0
+   ],
+   "height": 9,
+   "ink": false
+  },
+  {
+   "src": "kaykit:nature:trees_A_medium",
+   "pos": [
+    -9,
+    26,
+    0
+   ],
+   "height": 9,
+   "ink": false
+  },
+  {
+   "src": "kaykit:nature:trees_A_medium",
+   "pos": [
+    3,
+    27,
+    0
+   ],
+   "height": 9,
+   "ink": false
+  },
+  {
+   "src": "kaykit:nature:trees_A_medium",
+   "pos": [
+    15,
+    25,
+    0
+   ],
+   "height": 9,
+   "ink": false
+  },
+  {
+   "src": "kaykit:nature:trees_A_medium",
+   "pos": [
+    26,
+    27,
+    0
+   ],
+   "height": 9,
+   "ink": false
+  },
+  {
+   "src": "kaykit:nature:hills_A",
+   "pos": [
+    -18,
+    38,
+    0
+   ],
+   "height": 9,
+   "ink": false
+  },
+  {
+   "src": "kaykit:nature:hills_A",
+   "pos": [
+    8,
+    40,
+    0
+   ],
+   "height": 10,
+   "ink": false
+  },
+  {
+   "src": "kaykit:nature:hill_single_A",
+   "pos": [
+    28,
+    36,
+    0
+   ],
+   "height": 5,
+   "ink": false
+  },
+  {
+   "src": "kaykit:nature:rock_single_A",
+   "pos": [
+    -4.5,
+    1.0,
+    0
+   ],
+   "height": 0.45
+  },
+  {
+   "src": "kaykit:nature:rock_single_C",
+   "pos": [
+    5.5,
+    2.5,
+    0
+   ],
+   "height": 0.6
+  },
+  {
+   "src": "kaykit:city_builder:bench",
+   "pos": [
+    -3.0,
+    1.2,
+    0.03
+   ],
+   "width": 2.2,
+   "rot": 90
+  },
+  {
+   "src": "kaykit:city_builder:bench",
+   "pos": [
+    3.0,
+    6.0,
+    0.03
+   ],
+   "width": 2.2,
+   "rot": -90
+  },
+  {
+   "src": "kaykit:city_builder:streetlight",
+   "pos": [
+    2.3,
+    1.0,
+    0.03
+   ],
+   "height": 4.5,
+   "rot": 90
+  },
+  {
+   "src": "kaykit:city_builder:streetlight",
+   "pos": [
+    -2.3,
+    12.0,
+    0.03
+   ],
+   "height": 4.5,
+   "rot": -90
+  },
+  {
+   "src": "kaykit:city_builder:bush",
+   "pos": [
+    -4.5,
+    3.5,
+    0
+   ],
+   "scale": 3.2
+  },
+  {
+   "src": "kaykit:city_builder:bush",
+   "pos": [
+    5.0,
+    4.0,
+    0
+   ],
+   "scale": 3.0
+  },
+  {
+   "src": "kaykit:city_builder:bush",
+   "pos": [
+    -2.6,
+    8.0,
+    0
+   ],
+   "scale": 3.4
+  },
+  {
+   "src": "ph:wooden_picnic_table",
+   "pos": [
+    -7.0,
+    3.6,
+    0
+   ],
+   "height": 0.8,
+   "rot": 90
+  },
+  {
+   "src": "ph:planter_box_01",
+   "pos": [
+    4.2,
+    0.4,
+    0.03
+   ],
+   "height": 0.6
+  }
+ ],
+ "anchors": {
+  "A": {
+   "pos": [
+    -0.8,
+    0.0,
+    0.03
+   ],
+   "rot": 0
+  },
+  "B": {
+   "pos": [
+    0.8,
+    0.2,
+    0.03
+   ],
+   "rot": 180
+  },
+  "standing": {
+   "pos": [
+    0.0,
+    0.0,
+    0.03
+   ],
+   "rot": 0
+  },
+  "walking_path": {
+   "pos": [
+    0.0,
+    -6.0,
+    0.03
+   ],
+   "rot": 0,
+   "kind": "path"
+  },
+  "Table": {
+   "pos": [
+    -5.2,
+    3.6,
+    0
+   ],
+   "rot": 90
+  }
+ }
+}
