@@ -1,0 +1,19 @@
+# Heavy / regenerable (bootstrap_studio.py rebuilds these)
+asset_vault/*
+!asset_vault/.gitkeep
+tools/
+productions/*/frames/
+productions/*/render/
+productions/*/overlay/
+productions/*/cache/
+productions/*/*.wav
+scratch/
+*.blend1
+*.blend2
+__pycache__/
+*.pyc
+node_modules/
+.env
+*.key
+*.log
+Thumbs.db
