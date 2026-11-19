@@ -1,0 +1,69 @@
+{
+ "episode": "mini",
+ "fps": 60,
+ "res": [
+  1920,
+  1080
+ ],
+ "samples": 8,
+ "shots": [
+  {
+   "id": "t02",
+   "dur": 4.0,
+   "set": "living_room",
+   "mood": "golden",
+   "cast": [
+    {
+     "actor": "maya",
+     "at": "A",
+     "face": "B",
+     "action": "talk_emphatic",
+     "emote": "worried",
+     "look": "dan",
+     "lines": [
+      {
+       "wav": "audio/a1.wav",
+       "t": 0.2,
+       "text": "Okay, listen. I have found the problem, and honestly, it is worse than we thought!"
+      }
+     ]
+    },
+    {
+     "actor": "dan",
+     "at": "B",
+     "face": "A",
+     "action": "idle_breathe",
+     "emote": "tired",
+     "look": "maya"
+    }
+   ],
+   "cam": {
+    "preset": "OTS",
+    "over": "dan",
+    "at": "maya"
+   },
+   "callouts": [
+    {
+     "t": 0.8,
+     "dur": 2.2,
+     "type": "card",
+     "kicker": "Breaking",
+     "text": "Plot twist!",
+     "sub": "Worse than expected",
+     "color": "#ffe27a",
+     "x": 150,
+     "y": 120
+    },
+    {
+     "t": 1.6,
+     "dur": 2.0,
+     "type": "icon",
+     "icon": "\u26a0\ufe0f",
+     "color": "#ff7a6b",
+     "x": 1500,
+     "y": 160
+    }
+   ]
+  }
+ ]
+}

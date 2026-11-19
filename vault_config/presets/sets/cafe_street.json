@@ -1,0 +1,171 @@
+{
+ "id": "cafe_street",
+ "label": "City street with coffee cart and outdoor tables (exterior)",
+ "kind": "street",
+ "size": [
+  26,
+  16,
+  8
+ ],
+ "moods": [
+  "morning",
+  "day",
+  "golden",
+  "night",
+  "dramatic"
+ ],
+ "shell": {
+  "ground": "#6d7078",
+  "sidewalk": "#b9b5ad",
+  "walk_offset": 0.0,
+  "buildings": [
+   {
+    "size": [
+     7,
+     6,
+     9
+    ],
+    "pos": [
+     -8,
+     9.5,
+     4.5
+    ],
+    "color": "#c9774f"
+   },
+   {
+    "size": [
+     6,
+     6,
+     11
+    ],
+    "pos": [
+     -1.5,
+     9.5,
+     5.5
+    ],
+    "color": "#e0c08a"
+   },
+   {
+    "size": [
+     7,
+     6,
+     8
+    ],
+    "pos": [
+     5,
+     9.5,
+     4.0
+    ],
+    "color": "#7fa3a8"
+   },
+   {
+    "size": [
+     6,
+     6,
+     10
+    ],
+    "pos": [
+     11,
+     9.5,
+     5.0
+    ],
+    "color": "#b86a73"
+   }
+  ],
+  "trees": [
+   {
+    "pos": [
+     -4.5,
+     6.2,
+     0.1
+    ],
+    "h": 4.4
+   },
+   {
+    "pos": [
+     8.5,
+     6.2,
+     0.1
+    ],
+    "h": 4.0,
+    "canopy": "#6aa84f"
+   }
+  ]
+ },
+ "props": [
+  {
+   "asset": "outdoor_table_chair_set_01",
+   "pos": [
+    4.4,
+    6.1,
+    0.1
+   ],
+   "rot": 20,
+   "height": 0.95
+  },
+  {
+   "asset": "outdoor_table_chair_set_01",
+   "pos": [
+    7.2,
+    6.5,
+    0.1
+   ],
+   "rot": -35,
+   "height": 0.95
+  },
+  {
+   "asset": "street_lamp_01",
+   "pos": [
+    2.9,
+    7.4,
+    0.1
+   ],
+   "rot": 0,
+   "height": 4.2,
+   "lit": true,
+   "emission": 2.0
+  }
+ ],
+ "anchors": {
+  "A": {
+   "pos": [
+    -1.4,
+    4.9,
+    0
+   ],
+   "rot": 0
+  },
+  "B": {
+   "pos": [
+    0.4,
+    4.9,
+    0
+   ],
+   "rot": 180
+  },
+  "Cart": {
+   "pos": [
+    -3.5,
+    5.4,
+    0
+   ],
+   "rot": 0
+  },
+  "Table": {
+   "pos": [
+    4.4,
+    5.0,
+    0
+   ],
+   "rot": 0
+  },
+  "Entry": {
+   "pos": [
+    -6.5,
+    4.6,
+    0
+   ],
+   "rot": 0
+  }
+ }
+}

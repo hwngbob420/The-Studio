@@ -1,0 +1,31 @@
+{
+  "id": "park",
+  "label": "Sunny park with picnic table, lamp and tree line (exterior)",
+  "kind": "park",
+  "size": [40, 30, 10],
+  "moods": ["morning", "day", "golden", "night", "dramatic"],
+  "shell": {
+    "ground": "#74b858", "sky": "#9fd0f0",
+    "paths": [{"size": [2.6, 30, 0.05], "pos": [0, 0, 0], "color": "#d8c79e"}],
+    "trees": [
+      {"pos": [-6, 5, 0], "h": 5.5}, {"pos": [7, 7, 0], "h": 6.0, "canopy": "#5eab47"},
+      {"pos": [-11, 11, 0], "h": 6.5, "canopy": "#3f8f4a"}, {"pos": [12, 13, 0], "h": 7.0},
+      {"pos": [-3, 14, 0], "h": 6.0, "canopy": "#6aa84f"}, {"pos": [3, 16, 0], "h": 6.5, "canopy": "#4f9a4a"}
+    ],
+    "hills": [
+      {"r": 14, "pos": [-12, 22, -2], "color": "#5fa04a", "scale": [1.8, 0.8, 0.45]},
+      {"r": 16, "pos": [14, 24, -3], "color": "#4e9142", "scale": [1.7, 0.8, 0.45]}
+    ]
+  },
+  "props": [
+    {"asset": "wooden_picnic_table", "pos": [-3.6, 2.4, 0], "rot": 90, "height": 0.8},
+    {"asset": "street_lamp_01", "pos": [2.2, 1.0, 0], "rot": 0, "height": 4.0, "lit": true, "emission": 2.0},
+    {"asset": "Lantern_01", "pos": [-3.6, 2.4, 0.78], "rot": 0, "height": 0.3}
+  ],
+  "anchors": {
+    "A": {"pos": [-0.8, 0.0, 0], "rot": 0},
+    "B": {"pos": [0.8, 0.2, 0], "rot": 180},
+    "Table": {"pos": [-2.2, 2.4, 0], "rot": 90},
+    "Path": {"pos": [0, -2.0, 0], "rot": 0}
+  }
+}

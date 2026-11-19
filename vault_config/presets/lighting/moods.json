@@ -1,0 +1,160 @@
+{
+ "morning": {
+  "key": {
+   "elev": 24,
+   "az": -40,
+   "color": [
+    1.0,
+    0.86,
+    0.7
+   ],
+   "energy": 3.4
+  },
+  "rim": {
+   "elev": 20,
+   "color": [
+    1.0,
+    0.9,
+    0.8
+   ],
+   "energy": 1.8
+  },
+  "world": {
+   "color": [
+    0.62,
+    0.74,
+    0.95
+   ],
+   "strength": 1.05
+  },
+  "exposure": 0.0
+ },
+ "day": {
+  "key": {
+   "elev": 50,
+   "az": -35,
+   "color": [
+    1.0,
+    0.97,
+    0.92
+   ],
+   "energy": 3.3
+  },
+  "rim": {
+   "elev": 25,
+   "color": [
+    1.0,
+    1.0,
+    1.0
+   ],
+   "energy": 1.5
+  },
+  "world": {
+   "color": [
+    0.6,
+    0.78,
+    1.0
+   ],
+   "strength": 1.15
+  },
+  "exposure": 0.0
+ },
+ "golden": {
+  "key": {
+   "elev": 13,
+   "az": -55,
+   "color": [
+    1.0,
+    0.7,
+    0.42
+   ],
+   "energy": 4.0
+  },
+  "rim": {
+   "elev": 15,
+   "color": [
+    1.0,
+    0.78,
+    0.55
+   ],
+   "energy": 2.6
+  },
+  "world": {
+   "color": [
+    1.0,
+    0.72,
+    0.55
+   ],
+   "strength": 0.85
+  },
+  "exposure": 0.1
+ },
+ "night": {
+  "key": {
+   "elev": 38,
+   "az": -45,
+   "color": [
+    0.5,
+    0.6,
+    1.0
+   ],
+   "energy": 1.4
+  },
+  "rim": {
+   "elev": 22,
+   "color": [
+    0.45,
+    0.65,
+    1.0
+   ],
+   "energy": 2.4
+  },
+  "world": {
+   "color": [
+    0.07,
+    0.09,
+    0.22
+   ],
+   "strength": 0.6
+  },
+  "practical": {
+   "color": [
+    1.0,
+    0.68,
+    0.38
+   ],
+   "energy": 450
+  },
+  "exposure": -1.5
+ },
+ "dramatic": {
+  "key": {
+   "elev": 22,
+   "az": -85,
+   "color": [
+    1.0,
+    0.82,
+    0.62
+   ],
+   "energy": 4.6
+  },
+  "rim": {
+   "elev": 28,
+   "color": [
+    0.4,
+    0.85,
+    1.0
+   ],
+   "energy": 3.6
+  },
+  "world": {
+   "color": [
+    0.25,
+    0.3,
+    0.45
+   ],
+   "strength": 0.35
+  },
+  "exposure": -0.5
+ }
+}

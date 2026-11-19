@@ -33,8 +33,16 @@ def asset(kind, name):
     raise FileNotFoundError(f"MakeHuman asset not found: {kind}/{name}")
 
 
-def pick_ethnic_unit(base, ethnicity):
-    return base.replace("{eth}", ethnicity)
+def load_face_units(human, recipe):
+    """Load expression face-unit targets as zero-weight shape keys (brows, eye closure, smile/frown...)."""
+    race = max(recipe["macro"]["race"].items(), key=lambda kv: kv[1])[0]
+    units_dir = Path(LocationService.get_mpfb_data("targets")) / "expression" / "units" / race
+    for unit in sorted(FACE_UNITS):
+        f = units_dir / f"{unit}.target.gz"
+        if f.exists():
+            TargetService.load_target(human, str(f), weight=0.0, name=f"face_{unit}")
+        else:
+            print(f"[build_actor] missing face unit {f.name}")
 
 
 def build(recipe):
@@ -70,6 +78,22 @@ def build(recipe):
     return human, rig, attached
 
 
+def optimize(human, attached):
+    """Render-speed pass: bake macro shape keys, drop subsurf, decimate heavy clothing (CPU-bound per frame)."""
+    from bl_ext.user_default.mpfb.services.targetservice import TargetService as TS
+    if human.data.shape_keys:
+        TS.bake_targets(human)
+    for obj in [human] + [o for _, o in attached if o is not None]:
+        for m in list(obj.modifiers):
+            if m.type == "SUBSURF":
+                obj.modifiers.remove(m)
+        if obj.type == "MESH" and obj is not human and len(obj.data.vertices) > 6000:
+            dm = obj.modifiers.new("Decimate", "DECIMATE")
+            dm.ratio = max(0.08, 5000 / len(obj.data.vertices))
+            with bpy.context.temp_override(object=obj, active_object=obj):
+                bpy.ops.object.modifier_apply(modifier=dm.name)
+
+
 def hex_rgb(h):
     h = h.lstrip("#")
     return tuple(int(h[i:i + 2], 16) / 255 for i in (0, 2, 4))
@@ -84,26 +108,36 @@ def restyle(recipe, human, rig, attached):
     skin = srgb2lin(hex_rgb(recipe["skin"]))
     rid = recipe["id"]
 
-    def swap(obj, color, texture=None, outline=True, key=""):
+    udata = Path(LocationService.get_user_data())
+
+    def swap(obj, color, texture=None, outline=True, key="", **kw):
         if obj is None or obj.type != "MESH":
             return
         obj.data.materials.clear()
-        obj.data.materials.append(toon.toon_material(f"{rid}_{key}", (*color, 1), texture=texture))
+        obj.data.materials.append(toon.toon_material(f"{rid}_{key}", (*color, 1), texture=texture, **kw))
         if outline:
             toon.add_outline(obj, 0.0035)
 
-    swap(human, skin, key="skin")
+    skin_tex = None
+    if recipe.get("skin_tex"):
+        hits = list((udata / "skins" / recipe["skin_tex"]).glob("*.png"))
+        skin_tex = str(hits[0]) if hits else None
+    swap(human, skin, texture=skin_tex, key="skin", posterize=0, saturate=1.05, value=1.35)
     for kind, obj in attached:
         if obj is None:
             continue
         if kind.startswith("clothes:"):
+            pm = obj.modifiers.new("Puff", "DISPLACE")   # lift cloth 4 mm so skin never z-fights through it
+            pm.strength, pm.mid_level = 0.004, 0.0
             swap(obj, srgb2lin(hex_rgb(obj.get("studio_color", "#888888"))), key=obj.name)
         elif kind == "hair":
             swap(obj, srgb2lin(hex_rgb(recipe.get("hair_color", "#3a2a1e"))), key="hair")
         elif kind == "eyebrows" or kind == "eyelashes":
             swap(obj, srgb2lin(hex_rgb(recipe.get("hair_color", "#2a1d14"))), outline=False, key=kind)
         elif kind == "eyes":
-            swap(obj, srgb2lin(hex_rgb(recipe.get("eye_color", "#3b6ea5"))), outline=False, key="eyes")
+            eye_png = udata / "eyes" / "materials" / f"{recipe.get('eye_tex', 'brown')}_eye.png"
+            swap(obj, (1, 1, 1), texture=str(eye_png) if eye_png.exists() else None, outline=False, key="eyes",
+                 rim=0.0, bands=2)
         elif kind == "teeth":
             swap(obj, (0.9, 0.88, 0.82), outline=False, key="teeth")
         elif kind == "tongue":
@@ -118,6 +152,7 @@ def main():
     import addon_utils  # noqa: F401  (MPFB already enabled in user prefs; re-enable after factory reset)
     addon_utils.enable("bl_ext.user_default.mpfb", default_set=False)
     human, rig, attached = build(recipe)
+    optimize(human, attached)
     restyle(recipe, human, rig, attached)
     if rig is not None:
         rig["studio_actor"] = recipe["id"]

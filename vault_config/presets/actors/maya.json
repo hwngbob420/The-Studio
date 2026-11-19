@@ -4,7 +4,9 @@
   "macro": {"gender": 0.0, "age": 0.5, "muscle": 0.45, "weight": 0.45, "proportions": 0.6, "height": 0.5,
             "race": {"asian": 0.1, "caucasian": 0.3, "african": 0.6}},
   "skin": "#9b6a4c",
-  "hair": "bob01",
+  "skin_tex": "young_african_female",
+  "eye_tex": "brown",
+  "hair": "ponytail01",
   "hair_color": "#1f140e",
   "eye_color": "#4a3020",
   "clothes": [

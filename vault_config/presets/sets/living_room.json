@@ -1,0 +1,26 @@
+{
+  "id": "living_room",
+  "label": "Cozy apartment living room (interior, window light)",
+  "kind": "interior",
+  "size": [6.5, 5.0, 2.9],
+  "moods": ["morning", "day", "golden", "night", "dramatic"],
+  "shell": {
+    "floor": "#c79c6b", "walls": "#e9dfcc", "trim": "#f6f1e7", "ceiling": false,
+    "windows": [[-1.4, 2.0, 0.9, 1.5], [1.5, 1.6, 0.9, 1.5]],
+    "rug": {"w": 3.4, "d": 2.4, "pos": [0, -0.2], "color": "#b5503f"}
+  },
+  "props": [
+    {"asset": "sofa_02", "pos": [-1.2, 1.7, 0], "rot": 180, "height": 0.85},
+    {"asset": "wooden_table_02", "pos": [-1.2, 0.2, 0], "rot": 0, "height": 0.5},
+    {"asset": "modern_arm_chair_01", "pos": [1.6, 0.4, 0], "rot": 120, "height": 0.85},
+    {"asset": "Television_01", "pos": [-2.9, -0.6, 0.0], "rot": 90, "height": 0.9},
+    {"asset": "potted_plant_02", "pos": [2.6, 2.0, 0], "rot": 0, "height": 1.3},
+    {"asset": "steel_frame_shelves_01", "pos": [2.9, -1.6, 0], "rot": 270, "height": 1.9}
+  ],
+  "anchors": {
+    "A": {"pos": [-0.3, -0.9, 0], "rot": 20},
+    "B": {"pos": [1.2, -0.7, 0], "rot": 160},
+    "Sofa": {"pos": [-1.2, 1.35, 0], "rot": 0},
+    "Window": {"pos": [-1.4, 1.9, 0], "rot": 180}
+  }
+}

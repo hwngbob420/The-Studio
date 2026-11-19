@@ -236,8 +236,17 @@ def fcurves_of(act):
     return out
 
 
+FACE_PREFIX = ("jaw", "oris", "tongue", "levator", "special", "eye", "orbicularis", "oculi", "temporalis", "risorius")
+
+
+def is_face_bone(name):
+    return name.startswith(FACE_PREFIX)
+
+
 def key_all(rig, frame):
     for pb in rig.pose.bones:
+        if is_face_bone(pb.name):   # face is driven separately (lip-sync / emotes) so strips never fight
+            continue
         pb.keyframe_insert("rotation_euler", frame=frame, group=pb.name)
         if pb.name == "root":
             pb.keyframe_insert("location", frame=frame, group=pb.name)

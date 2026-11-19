@@ -1,0 +1,80 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  html,body{margin:0;background:transparent;overflow:hidden;width:1920px;height:1080px}
+  *{box-sizing:border-box}
+  #stage{position:absolute;inset:0;font-family:"Arial Rounded MT Bold","Trebuchet MS","Segoe UI",Arial,sans-serif;color:#1b1626}
+  .card{position:absolute;background:var(--bg,#ffe27a);border:7px solid #1b1626;border-radius:34px;padding:26px 38px;
+        box-shadow:12px 14px 0 rgba(27,22,38,.92);transform-origin:50% 100%;font-weight:900}
+  .card .k{font-size:30px;letter-spacing:2px;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+  .card .t{font-size:64px;line-height:1.02}
+  .card .s{font-size:32px;margin-top:10px;font-weight:700;opacity:.85}
+  .badge{position:absolute;width:132px;height:132px;border-radius:50%;background:var(--bg,#ff7a6b);border:7px solid #1b1626;
+         box-shadow:8px 10px 0 rgba(27,22,38,.92);display:flex;align-items:center;justify-content:center;font-size:74px}
+  .stat{position:absolute;text-align:center;font-weight:900}
+  .stat .n{font-size:190px;line-height:1;color:#fff;-webkit-text-stroke:12px #1b1626;paint-order:stroke fill;
+           text-shadow:10px 12px 0 rgba(27,22,38,.9)}
+  .stat .l{font-size:44px;margin-top:6px;background:#ffe27a;border:6px solid #1b1626;border-radius:22px;display:inline-block;padding:8px 26px}
+  .bars{position:absolute;background:#fff8e8;border:7px solid #1b1626;border-radius:30px;padding:28px 34px;box-shadow:12px 14px 0 rgba(27,22,38,.92)}
+  .bars h3{margin:0 0 16px;font-size:38px;font-weight:900}
+  .row{display:flex;align-items:center;margin:12px 0;font-weight:800;font-size:30px}
+  .row .lab{width:210px}.row .bar{height:46px;border:5px solid #1b1626;border-radius:14px;background:var(--c,#6bd4a1);width:0}
+  .row .val{margin-left:14px;font-size:30px}
+  .kin{position:absolute;font-weight:900;font-size:150px;line-height:1;color:#fff;-webkit-text-stroke:14px #1b1626;paint-order:stroke fill;
+       text-shadow:10px 12px 0 rgba(27,22,38,.9);white-space:nowrap}
+  .kin span{display:inline-block}
+  .lower{position:absolute;left:96px;bottom:150px;display:flex;align-items:stretch;transform-origin:0 100%}
+  .lower .tag{background:#ff7a6b;border:7px solid #1b1626;border-right:none;border-radius:22px 0 0 22px;width:30px}
+  .lower .box{background:#fff8e8;border:7px solid #1b1626;border-radius:0 22px 22px 0;padding:14px 34px;box-shadow:10px 12px 0 rgba(27,22,38,.92)}
+  .lower .a{font-size:46px;font-weight:900}.lower .b{font-size:28px;font-weight:700;opacity:.8}
+</style></head>
+<body><div id="stage"></div>
+<script src="gsap.min.js"></script>
+<script>
+// Deterministic: build one paused GSAP timeline for a single callout, then the renderer calls seek(t) per frame.
+const stage = document.getElementById('stage');
+const POP = "back.out(2.1)", SPRING = "elastic.out(1,0.45)";
+function el(cls, html, style){ const d=document.createElement('div'); d.className=cls; d.innerHTML=html||''; Object.assign(d.style, style||{}); stage.appendChild(d); return d; }
+
+window.build = function(c){
+  stage.innerHTML=''; const dur=c.dur||3, out=0.35, tl=gsap.timeline({paused:true});
+  const pos = {left:(c.x??1130)+'px', top:(c.y??170)+'px'};
+  if(c.type==='card'){
+    const d=el('card', (c.kicker?`<div class="k">${c.kicker}</div>`:'')+`<div class="t">${c.text}</div>`+(c.sub?`<div class="s">${c.sub}</div>`:''),
+               {...pos, '--bg':c.color||'#ffe27a', maxWidth:(c.w||640)+'px'});
+    tl.fromTo(d,{scale:0,rotation:-9,opacity:0},{scale:1,rotation:c.tilt??-2.5,opacity:1,duration:.55,ease:POP})
+      .to(d,{y:-10,duration:1.1,ease:'sine.inOut',yoyo:true,repeat:Math.max(1,Math.floor(dur/1.1))},.55)
+      .to(d,{scale:0,rotation:7,opacity:0,duration:out,ease:'back.in(2)'},dur-out);
+  } else if(c.type==='icon'){
+    const d=el('badge', c.icon||'💡', {...pos,'--bg':c.color||'#ff7a6b'});
+    tl.fromTo(d,{scale:0,opacity:0},{scale:1,opacity:1,duration:.6,ease:SPRING})
+      .to(d,{rotation:8,duration:.25,yoyo:true,repeat:5,ease:'sine.inOut'},.6)
+      .to(d,{scale:0,opacity:0,duration:out,ease:'back.in(2)'},dur-out);
+  } else if(c.type==='stat'){
+    const d=el('stat', `<div class="n" id="n">0</div><div class="l">${c.text||''}</div>`, pos);
+    const o={v:0}, to=parseFloat(c.value), fmt=(v)=>(c.prefix||'')+(Math.round(v*(c.dec?10:1))/(c.dec?10:1)).toLocaleString('en-US')+(c.suffix||'');
+    tl.fromTo(d,{scale:.2,opacity:0},{scale:1,opacity:1,duration:.5,ease:POP})
+      .to(o,{v:to,duration:1.3,ease:'power3.out',onUpdate:()=>{d.querySelector('#n').textContent=fmt(o.v)}},.15)
+      .to(d,{scale:0,opacity:0,duration:out,ease:'back.in(2)'},dur-out);
+  } else if(c.type==='bars'){
+    const rows=(c.data||[]).map(r=>`<div class="row"><div class="lab">${r[0]}</div><div class="bar" style="--c:${r[2]||'#6bd4a1'}" data-w="${r[1]}"></div><div class="val">${r[1]}${c.suffix||''}</div></div>`).join('');
+    const d=el('bars', `<h3>${c.text||''}</h3>${rows}`, {...pos,width:(c.w||620)+'px'});
+    const max=Math.max(...(c.data||[[0,1]]).map(r=>r[1]));
+    tl.fromTo(d,{scale:0,opacity:0,transformOrigin:'50% 100%'},{scale:1,opacity:1,duration:.5,ease:POP})
+      .to(d.querySelectorAll('.bar'),{width:(i,t)=>Math.round(t.dataset.w/max*300)+'px',duration:.9,ease:'back.out(1.4)',stagger:.14},.35)
+      .to(d,{scale:0,opacity:0,duration:out,ease:'back.in(2)'},dur-out);
+  } else if(c.type==='kinetic'){
+    const d=el('kin', c.text.split('').map(ch=>`<span>${ch===' '?'&nbsp;':ch}</span>`).join(''), {...pos,fontSize:(c.size||150)+'px'});
+    tl.fromTo(d.children,{y:140,opacity:0,rotation:()=>gsap.utils.random(-25,25),scale:.4},{y:0,opacity:1,rotation:0,scale:1,duration:.5,ease:POP,stagger:.045})
+      .to(d.children,{y:-14,duration:.4,ease:'sine.inOut',yoyo:true,repeat:3,stagger:.05},.9)
+      .to(d,{opacity:0,y:-60,duration:out,ease:'power2.in'},dur-out);
+  } else if(c.type==='lower'){
+    const d=el('lower', `<div class="tag"></div><div class="box"><div class="a">${c.text}</div>${c.sub?`<div class="b">${c.sub}</div>`:''}</div>`);
+    tl.fromTo(d,{x:-700,opacity:0},{x:0,opacity:1,duration:.55,ease:'back.out(1.5)'})
+      .to(d,{x:-800,opacity:0,duration:out,ease:'power2.in'},dur-out);
+  }
+  tl.duration(dur);
+  window.tl=tl; return dur;
+};
+window.seek = (t)=>{ window.tl.seek(t,false); };
+</script></body></html>

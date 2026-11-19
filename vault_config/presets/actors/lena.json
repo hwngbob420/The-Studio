@@ -1,0 +1,4 @@
+{"id":"lena","label":"Lena - 64, caucasian, warm grandmotherly mentor",
+ "macro":{"gender":0.0,"age":0.82,"muscle":0.4,"weight":0.62,"proportions":0.4,"height":0.38,"race":{"asian":0.1,"caucasian":0.85,"african":0.05}},
+ "skin":"#d8b3a0","skin_tex":"old_caucasian_female","eye_tex":"grey","hair":"bob02","hair_color":"#c9c9cf","eyebrows":"eyebrow007",
+ "clothes":[{"asset":"toigo_fisherman_sweater","color":"#6e93b8"},{"asset":"toigo_wool_pants","color":"#4c4a55"},{"asset":"toigo_flats","color":"#8a5a44"}]}

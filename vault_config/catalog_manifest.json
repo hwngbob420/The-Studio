@@ -1,0 +1,115 @@
+{
+ "actors": {
+  "dan": "Dan - 38, caucasian, tired-but-charming producer",
+  "kai": "Kai - 19, east-asian, energetic intern",
+  "lena": "Lena - 64, caucasian, warm grandmotherly mentor",
+  "maya": "Maya - 28, mixed-heritage, creative lead"
+ },
+ "sets": {
+  "cafe_street": {
+   "about": "City street with coffee cart and outdoor tables (exterior)",
+   "anchors": [
+    "A",
+    "B",
+    "Cart",
+    "Table",
+    "Entry"
+   ],
+   "moods": [
+    "morning",
+    "day",
+    "golden",
+    "night",
+    "dramatic"
+   ]
+  },
+  "living_room": {
+   "about": "Cozy apartment living room (interior, window light)",
+   "anchors": [
+    "A",
+    "B",
+    "Sofa",
+    "Window"
+   ],
+   "moods": [
+    "morning",
+    "day",
+    "golden",
+    "night",
+    "dramatic"
+   ]
+  },
+  "park": {
+   "about": "Sunny park with picnic table, lamp and tree line (exterior)",
+   "anchors": [
+    "A",
+    "B",
+    "Table",
+    "Path"
+   ],
+   "moods": [
+    "morning",
+    "day",
+    "golden",
+    "night",
+    "dramatic"
+   ]
+  }
+ },
+ "actions": [
+  "argue_point",
+  "idle_breathe",
+  "phone_scroll",
+  "slump_tired",
+  "surprised",
+  "talk_calm",
+  "talk_emphatic",
+  "think_chin",
+  "walk"
+ ],
+ "emotes": [
+  "neutral",
+  "happy",
+  "sad",
+  "angry",
+  "surprised",
+  "worried",
+  "smug",
+  "tired",
+  "thinking"
+ ],
+ "moods": [
+  "morning",
+  "day",
+  "golden",
+  "night",
+  "dramatic"
+ ],
+ "cameras": [
+  "Wide",
+  "Medium",
+  "SlowDolly",
+  "Handheld",
+  "OTS",
+  "CloseUp",
+  "LowHero"
+ ],
+ "camera_notes": {
+  "OTS": "needs over+at actor ids",
+  "CloseUp": "focus=actor, flip=-1 mirrors side",
+  "Wide/Medium/SlowDolly/Handheld/LowHero": "focus=[actors]"
+ },
+ "callouts": [
+  "card",
+  "icon",
+  "stat",
+  "bars",
+  "kinetic",
+  "lower"
+ ],
+ "voices": [
+  "Zira",
+  "David"
+ ],
+ "shot_schema": "see .claude/skills/shotlist-schema.md"
+}
